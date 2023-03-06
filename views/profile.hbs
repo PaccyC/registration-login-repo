@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+{{> header}}
+<body>
+ {{> navbar}}
+    <div class="container-fluid">
+      <h2>User Profile</h2>
+      <img src="/images/man.png" alt="">
+
+    <form action="/profile" method="">
+    </form>
+    <a href="/update/{{user._id}}">Edit</a>
+    <a href="/delete/{{user._id}}">Delete</a>
+      <span>{{user.username}}</span>
+      <span>{{user.email}}</span>
+
+      </div>
+<script>
+
+</script>
+
+</body>
+</html>

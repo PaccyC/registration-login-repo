@@ -1,0 +1,370 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Play with my crud application",
+        "title": "USER LOGIN"
+    },
+    "tags": [
+        {
+            "name": "User"
+        },
+        {
+            "name": "Abayisenga Aime Pacifique"
+        }
+    ],
+    "paths": {
+        "/register": {
+            "post": {
+                "tags": [
+                    "USER"
+                ],
+                "summary": "Registering a user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "type" : "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "email": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "password": {
+                                "type": "string",
+                                "required": true
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "USER"
+                ],
+                "summary": "Login a user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "type" : "object",
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "password": {
+                                "type": "string",
+                                "required": true
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "tags": [
+                    "USER"
+                ],
+                "summary": "Get profile of a logged in user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Auth",
+                        "required": true,
+                        "description": "Token"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/edit{id}": {
+            "get": {
+                "tags": [
+                    "PRODUCT"
+                ],
+                "summary": "Get all products",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/update/{id}": {
+            "post": {
+                "tags": [
+                    "Username,email"
+                ],
+                "summary": "Get product by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the product",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/delete/{id}": {
+            "get": {
+                "tags": [
+                    "PRODUCT"
+                ],
+                "summary": "Create a new product",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Auth",
+                        "required": true,
+                        "description": "Token"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "type" : "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "number",
+                                "required": true
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/landing": {
+            "get": {
+                "tags": [
+                    "PRODUCT"
+                ],
+                "summary": "Update a product",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Auth",
+                        "required": true,
+                        "description": "Token"
+                    },
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the product",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "type" : "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "number",
+                                "required": true
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/signup": {
+            "get": {
+                "tags": [
+                    "PRODUCT"
+                ],
+                "summary": "delete a product",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Auth",
+                        "required": true,
+                        "description": "Token"
+                    },
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the product",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        }
+    }
+  }

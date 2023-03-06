@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+ {{> header}}
+<body>
+        {{> navbar}}
+    <div class="container">
+        <div class="text">Registration</div>
+     <form action="/register" method="post">
+            <div class="data">
+                <label for="name">Full Name</label>
+                <input type="text" name="username" id="name" value="{{username}}">
+
+            </div>
+            <div class="data">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="{{email}}">
+
+            </div>
+            <div class="data">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" value="{{password}}">
+
+            </div>
+            <div class="data">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" name="confirm_password" id="password" value="{{confirm_password}}">
+
+            </div>
+            <div class="data">
+                <input type="hidden" name="_id" value="{{_id}}">
+            </div>
+            <div class="btn">
+                <button type="submit">Register</button>
+            </div>
+            <div class="signup-link">
+                Not a member? <a href="/">Login now</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+</body>
+</html>
