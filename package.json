@@ -25,6 +25,8 @@
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.0",
     "morgan": "^1.10.0",
-    "swagger-ui": "^4.16.1"
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui": "^4.16.1",
+    "swagger-ui-express": "^4.6.2"
   }
 }

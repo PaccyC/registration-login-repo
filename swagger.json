@@ -143,7 +143,7 @@
                 }
             }
         },
-        "/edit{id}": {
+        "/edit/{id}": {
             "get": {
                 "tags": [
                     "PRODUCT"
@@ -176,7 +176,7 @@
                 "tags": [
                     "Username,email"
                 ],
-                "summary": "Get product by id",
+                "summary": "update username by id" ,
                 "consumes": [
                     "application/json"
                 ],
@@ -187,7 +187,7 @@
                     {
                         "in":"path",
                         "name":"id",
-                        "description":"id of the product",
+                        "description":"id of the user",
                         "type":"string",
                         "required":"true"
                     }
@@ -211,9 +211,9 @@
         "/delete/{id}": {
             "get": {
                 "tags": [
-                    "PRODUCT"
+                    "USER"
                 ],
-                "summary": "Create a new product",
+                "summary": "delete a user by id",
                 "consumes": [
                     "application/json"
                 ],
@@ -265,7 +265,7 @@
         "/landing": {
             "get": {
                 "tags": [
-                    "PRODUCT"
+                    "USER"
                 ],
                 "summary": "Update a product",
                 "consumes": [
@@ -326,9 +326,9 @@
         "/signup": {
             "get": {
                 "tags": [
-                    "PRODUCT"
+                    "USER"
                 ],
-                "summary": "delete a product",
+                "summary": "Registering a user",
                 "consumes": [
                     "application/json"
                 ],

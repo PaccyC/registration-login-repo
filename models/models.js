@@ -1,5 +1,6 @@
 
 const mongoose=require('mongoose');
+const Joi=require('joi');
 const Schema=mongoose.Schema
 
 const userSchema= new Schema({
@@ -27,6 +28,8 @@ const userSchema= new Schema({
 {
     timestamps:true
 });
+
+
 const User=mongoose.model("userData",userSchema);
 
 module.exports=User;

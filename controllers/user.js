@@ -1,7 +1,5 @@
 const User = require("../models/models");
 const bcrypt = require("bcryptjs");
-const async = require("hbs/lib/async");
-
 const jwt = require("jsonwebtoken");
 
 var tokens = [];
@@ -12,7 +10,9 @@ exports.logout = async (req, res, next) => {
 };
 const maxAge=3 * 24 *  60 *60;
 exports.register = async (req, res, next) => {
+  try{
   const { username, email, password, confirm_password } = req.body;
+  console.log(req.body);
   let errors = [];
 
   if (!username || !email || !password || !confirm_password) {
@@ -20,29 +20,36 @@ exports.register = async (req, res, next) => {
     errors.push({ msg: "please fill all fields" });
     res.json({ msg: "please fill all fields" });
   }
+  
   if (password != confirm_password) {
     res.json({ msg: "passwords don't match" });
   }
   if (password.length < 5) {
     res.json({ msg: "password is too short" });
-  } else {
-    User.findOne({ email: email }).then((user) => {
+  }
+   else 
+   {
+    User.findOne({ email: email })
+    .then((user) => {
       if (user) {
         res.send("User already exists");
-      } else {
+      } 
+      else {
         const newUser = new User({
-          email,
-          password,
-          username,
-          confirm_password,
+          email:email,
+          password:password,
+          username:username,
+          confirm_password:confirm_password,
         });
+       
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
+
             else {
               newUser.password = hash;
               newUser
-                .save()
+            .save()
                 .then((user) => {
                 const token = jwt.sign(
                     {
@@ -56,7 +63,8 @@ exports.register = async (req, res, next) => {
                   );
 
                   res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge * 1000})
-                  res.status(200).json({user:user._id});
+                  res.status(200)
+                  // .json({user:user._id});
                   
                   console.log(token);
                   tokens.push(token);
@@ -69,7 +77,13 @@ exports.register = async (req, res, next) => {
       }
     });
   }
-};
+}
+catch(err){
+  console.log(err);
+}
+
+}
+;
 exports.login =(req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {

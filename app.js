@@ -3,8 +3,11 @@ const mongoose=require('mongoose');
 const _=require('lodash');
 const path=require('path')
 const hbs=require('hbs')
+const swaggerJSDoc=require('swagger-jsdoc')
+const swaggerUi=require('swagger-ui-express');
 const cookieParser=require('cookie-parser');
 const app=express();
+
 
 const {checkAuth,checkUser}=require('./authMiddleware/authMiddleware')
 
@@ -28,17 +31,28 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 app.use(cookieParser());
 
+//swagger
+
+const options={
+    definition:{
+        openapi:'3.0.0',
+        info:{
+            
+        }
+    }
+}
 
 const location=path.join(__dirname,"./public");
 app.use(express.static(location))
 
+// app.use('/swagger',require('./swagger.json'));
 const partialPath=path.join(__dirname,"./views/partials");
 hbs.registerPartials(partialPath);
 
 
 app.get('/set-cookies',(req,res)=>{
- res.cookie("paccy",false,{maxAge:2 * 24 * 60 *60 *60})
- res.send('cookies are set'); 
+    res.cookie("paccy",false,{maxAge:2 * 24 * 60 *60 *60})
+    res.send('cookies are set'); 
     
 })
 app.get('/read-cookies',(req,res)=>{
